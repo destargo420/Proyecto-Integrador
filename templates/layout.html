@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- llamar bootstrap -->
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.css')}}">
+    <!-- llamar estilos -->
+    
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/style.css')}}">
+    
+    
+    <title>Reparacion Viviendas</title>
+</head>
+<body>
+    
+
+    <!-- contenido otras paginas -->
+    {% block info %}
+    <!-- muestra la informacio cuiabndo se llame bloc k info -->
+    {% endblock %}
+
+
+    <!-- llamar bootstrap js -->
+    <script src="../static/bootstrap/js/bootstrap.bundle.js"></script> 
+</body>
+</html>

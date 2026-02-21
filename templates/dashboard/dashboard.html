@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block info %}
+<div class="container mt-5">
+  <div class="text-center mb-4">
+    <h2>RESTITUCION DE VIVIENDAS</h2>
+    <p class="lead">Bienvenido, {{ current_user.Fullname }} ({{ current_user.Rol }})</p>
+  </div>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+ <div class="d-grid gap-3 mb-4">
+  <a href="{{ url_for('propietario_panel') }}" class="btn btn-outline-primary btn-lg">Gestión de Viviendas</a>
+  <a href="{{ url_for('ver_propietarios') }}" class="btn btn-outline-info btn-lg">Propietarios Registrados</a>
+
+  <a href="{{ url_for('ver_usuarios') }}" class="btn btn-outline-success btn-lg">Usuarios Registrados</a>
+  
+  <a href="{{ url_for('logout') }}" class="btn btn-danger btn-lg">Cerrar Sesión</a>
+</div>
+{% if current_user.Rol == 'Administrador' %}
+<div class="text-center my-4">
+    <div class="btn-group" role="group" aria-label="Descargar PDFs">
+        <a href="{{ url_for('descargar_propietarios_pdf') }}" class="btn btn-danger mx-2">
+            Propietarios
+        </a>
+        <a href="{{ url_for('descargar_usuarios_pdf') }}" class="btn btn-primary mx-2">
+             Usuarios
+        </a>
+        <a href="{{ url_for('descargar_viviendas_pdf') }}" class="btn btn-success mx-2">
+             Viviendas
+        </a>
+    </div>
+</div>
+{% endif %}
+
+</div>
+{% endblock %}

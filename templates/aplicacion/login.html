@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block info %}
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+  <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+    <form method="POST" action="{{ url_for('login') }}">
+      {{ form.hidden_tag() }}
+
+      <div class="text-center mb-4">
+        <img src="{{ url_for('static', filename='images/img1.png') }}" alt="Logo" width="100" height="60">
+        <h1 class="h4 mt-3">Iniciar sesión</h1>
+      </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <div class="form-floating mb-3">
+        {{ form.username(class="form-control", id="username", placeholder="Usuario") }}
+        <label for="username">Usuario</label>
+        {% for error in form.username.errors %}
+          <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      <div class="form-floating mb-4">
+        {{ form.password(class="form-control", id="password", placeholder="Contraseña") }}
+        <label for="password">Contraseña</label>
+        {% for error in form.password.errors %}
+          <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      {{ form.submit(class="w-100 btn btn-primary mb-2") }}
+      <a href="{{ url_for('register') }}" class="w-100 btn btn-outline-secondary mb-2">Crear cuenta nueva</a>
+      <a href="{{ url_for('home') }}" class="w-100 btn btn-secondary">Volver</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

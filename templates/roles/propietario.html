@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% block info %}
+<div class="container mt-5">
+  {% if admin_view %}
+    <h2 class="text-center mb-4">Todas las Viviendas Registradas</h2>
+  {% else %}
+    <h2 class="text-center mb-4">Registro de Viviendas</h2>
+  {% endif %}
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  {% if not admin_view %}
+  <!-- Formulario solo visible para propietarios -->
+  <form action="{{ url_for('propietario_panel') }}" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="mb-3">
+      <label for="direccion" class="form-label">Dirección</label>
+      <input type="text" class="form-control" id="direccion" name="direccion" required maxlength="50">
+    </div>
+    <div class="mb-3">
+      <label for="tipo" class="form-label">Tipo de Vivienda</label>
+      <input type="text" class="form-control" id="tipo" name="tipo" required maxlength="15">
+    </div>
+    <div class="mb-3">
+      <label for="anio" class="form-label">Año de Construcción</label>
+      <input type="number" class="form-control" id="anio" name="anio" min="1800" max="2025" required>
+    </div>
+   <div class="mb-3">
+  <label for="imagen" class="form-label">Imagen del Estado Actual</label>
+  <input 
+    type="file" 
+    class="form-control" 
+    id="imagen" 
+    name="imagen" 
+    accept="image/png, image/jpeg, image/jpg, image/webp" 
+    required 
+    onchange="validarImagen(this)">
+  <small class="text-muted">Solo se permiten imágenes (.jpg, .jpeg, .png, .webp)</small>
+</div>
+<script>
+function validarImagen(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  const tiposPermitidos = ["image/jpeg", "image/png", "image/jpg", "image/webp"];
+  if (!tiposPermitidos.includes(file.type)) {
+    alert("Solo se permiten archivos de imagen (JPG, JPEG, PNG o WEBP).");
+    input.value = ""; // borra el archivo seleccionado
+  }
+
+  const maxSizeMB = 5; // máximo 5 MB
+  if (file.size > maxSizeMB * 1024 * 1024) {
+    alert("La imagen no puede superar los 5 MB.");
+    input.value = "";
+  }
+}
+</script>
+    <div class="mb-3">
+      <label for="danio" class="form-label">Descripción del Daño</label>
+      <input type="text" class="form-control" id="danio" name="danio" required maxlength="50">
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Guardar Vivienda</button>
+  </form>
+  <hr class="my-4">
+  {% endif %}
+
+  <!-- Tabla visible para ambos -->
+  <table class="table table-striped table-bordered text-center align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Dirección</th>
+        <th>Tipo</th>
+        <th>Año</th>
+        <th>Daño</th>
+        {% if admin_view %}
+        <th>Propietario</th>
+        <th>Usuario</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for v in viviendas %}
+      <tr>
+        <td>{{ v[0] }}</td>
+        <td>{{ v[1] }}</td>
+        <td>{{ v[2] }}</td>
+        <td>{{ v[3] }}</td>
+        <td>{{ v[4] }}</td>
+        {% if admin_view %}
+        <td>{{ v[5] }}</td>
+        <td>{{ v[6] }}</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+      {% if not viviendas %}
+      <tr><td colspan="7">No hay viviendas registradas.</td></tr>
+      {% endif %}
+    </tbody>
+  </table>
+
+  <div class="text-center mt-3">
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Volver al Dashboard</a>
+  </div>
+</div>
+{% endblock %}

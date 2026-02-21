@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block info %}
+<div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+  <div class="card shadow p-4" style="max-width: 500px; width: 100%;">
+    <form method="POST" action="{{ url_for('register') }}" novalidate>
+      {{ form.hidden_tag() }}
+
+      <div class="text-center mb-4">
+        <img src="{{ url_for('static', filename='images/img1.png') }}" alt="Logo" width="100" height="60">
+        <h1 class="h4 mt-3">Registro de Propietario</h1>
+      </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message|safe }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <!-- Nombre completo -->
+      <div class="form-floating mb-3">
+        {{ form.fullname(class="form-control", id="fullname", placeholder="Nombre completo", maxlength="60", pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ ]{3,60}", title="Solo letras y espacios") }}
+        <label for="fullname">Nombre completo</label>
+        {% for error in form.fullname.errors %}
+          <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+  <!-- Cédula -->
+<div class="form-floating mb-3">
+  <input type="number" name="cedula" class="form-control" id="cedula"
+         placeholder="Cédula" required min="1" max="9999999999999"
+         oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,13);">
+  <label for="cedula">Cédula</label>
+  <small class="text-muted">Solo números, máximo 13 dígitos</small>
+</div>
+
+<!-- Teléfono -->
+<div class="form-floating mb-3">
+  <input type="number" name="telefono" class="form-control" id="telefono"
+         placeholder="Teléfono" required min="1000000" max="9999999999999"
+         oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,13);">
+  <label for="telefono">Teléfono</label>
+  <small class="text-muted">Solo números, máximo 13 dígitos</small>
+</div>
+
+
+      <!-- Correo -->
+      <div class="form-floating mb-3">
+        <input type="email" name="correo" class="form-control" id="correo" placeholder="Correo electrónico"
+               required maxlength="50" autocomplete="off">
+        <label for="correo">Correo electrónico</label>
+      </div>
+
+  
+<!-- Ubicación (lat,lon) -->
+<div class="form-floating mb-3">
+  <input type="text" name="ubicacion" class="form-control" id="ubicacion" placeholder="Latitud, Longitud"
+         pattern="^$|^-?\d{1,3}\.\d+,\s*-?\d{1,3}\.\d+$"
+         title="Formato: latitud,longitud. Ejemplo: 10.9876,-74.7890">
+  <label for="ubicacion">Ubicación (latitud,longitud)</label>
+</div>
+
+      <!-- Usuario -->
+      <div class="form-floating mb-3">
+        {{ form.username(class="form-control", id="username", placeholder="Usuario", maxlength="40", pattern="[A-Za-z0-9_]{4,40}", title="Solo letras, números y guiones bajos.") }}
+        <label for="username">Usuario</label>
+        {% for error in form.username.errors %}
+          <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      <!-- Contraseña -->
+      <div class="form-floating mb-3">
+        {{ form.password(class="form-control", id="password", placeholder="Contraseña", minlength="6", maxlength="40", title="Debe tener al menos 6 caracteres") }}
+        <label for="password">Contraseña</label>
+        {% for error in form.password.errors %}
+          <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      <!-- Confirmar contraseña -->
+      <div class="form-floating mb-4">
+        {{ form.confirm_password(class="form-control", id="confirm_password", placeholder="Confirmar contraseña", minlength="6", maxlength="40") }}
+        <label for="confirm_password">Confirmar contraseña</label>
+        {% for error in form.confirm_password.errors %}
+          <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+      </div>
+
+      {{ form.submit(class="w-100 btn btn-primary mb-2") }}
+      <a href="{{ url_for('login') }}" class="w-100 btn btn-secondary">Volver</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

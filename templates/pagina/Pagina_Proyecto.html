@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Reparación Viviendas</title>
+</head>
+<!-- Cabecera -->
+<body> 
+   <!-- <header> 
+        <div class="container">
+            <p class="logo">Reparación Viviendas<br>Victimas en Colombia</p>
+            <nav>   <a href="#somos">Canales de Atencion</a> 
+                    <a href="#servicios">+ Info</a> 
+                    <a href="#final">Registrarse</a> </nav>
+        </div>
+    </header>-->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Proyecto Reparacion Viviendas</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+       
+        <li class="nav-item dropdown">
+       
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('login')}}">Login</a>
+        </li>
+      </ul>
+   
+    </div>
+  </div>
+</nav>
+
+
+     <!-- Sección Hero -->
+    <section id="hero">
+        <h1>Trabajamos Para <br> Garantizar <br> Tus Derechos!</h1> <a
+            href="https://www.gov.co/ficha-tramites-y-servicios/T1223" target="_blank"><button>Inscripción en el
+                Registro Único de Víctimas</button></a>
+    </section>
+     <!-- Sección Somos -->
+    <section id="somos">
+        <div class="container">
+            <div class="somos-texto">
+                <h2>Información</h2>
+                <p> Para la reparación de viviendas de víctimas en Colombia, puedes dirigirte a la Unidad para las
+                    Víctimas para acceder a medidas de reparación integral, las cuales se coordinan a través del Sistema
+                    Nacional de Atención y Reparación Integral a las Víctimas (SNARIV), o consultar los programas del
+                    distrito o la gobernación, como Bogotá Mi Casa en Bogotá o Oferta Preferente, que ofrecen soluciones
+                    de vivienda y mejoramiento a través de convocatorias específicas para víctimas del conflicto armado.
+                </p> <a href="https://www.gov.co/" target="_blank"><button>Conoce Más</button></a>
+            </div>
+            <div class="somos-imagen"> <a href="https://www.youtube.com/watch?v=3_sFk3Ryit4" target="_blank"> <img
+                        src="../../static/images/Img-01.PNG" alt="Imagen Info" /> </a> </div>
+        </div>
+    </section> 
+    <!-- Sección Feed --> 
+   <section id="servicios" class="servicios">
+    <div class="container">
+        <br>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../../static/images/001.webp" class="d-block w-100" alt="Servicio de reparación de viviendas para víctimas del conflicto armado">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Unidad para las Víctimas</h5>
+                        <p>Es la entidad del orden nacional que coordina la implementación de las medidas de reparación integral a las víctimas del conflicto armado, que pueden incluir la rehabilitación de viviendas.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../../static/images/002.jpg" class="d-block w-100" alt="Convocatorias del Distrito y Gobernación para soluciones habitacionales">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Participa en convocatorias del Distrito/Gobernación</h5>
+                        <p>El Distrito de Bogotá, a través de la Secretaría del Hábitat, y las gobernaciones como la de Cundinamarca, realizan convocatorias para ofrecer soluciones habitacionales o mejorar viviendas, dirigidas a víctimas del conflicto armado.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../../static/images/003.jpg" class="d-block w-100" alt="Tipos de reparación para víctimas del conflicto armado">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>¿Qué tipo de reparación puedes encontrar?</h5>
+                        <p>Medidas de reparación integral: La reparación puede incluir la rehabilitación de viviendas, y es importante saber que el acceso depende del tipo de daño y la voluntad de la víctima.</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+                </section> 
+                <!-- Sección Final -->
+                <section id="final">
+                    <h2>Inscríbete en el Registro Único de Víctimas (RUV) </h2> <a href="https://www.gov.co/ficha-tramites-y-servicios/T1223"
+                        target="_blank"><button>Registrarse</button></a>
+                </section> 
+                <!-- Sección Footer -->
+                <footer>
+                    <div class="container">
+                        <p>&copy; Proyecto Integrador</p>
+                    </div>
+                </footer>
+</body>
+
+</html>

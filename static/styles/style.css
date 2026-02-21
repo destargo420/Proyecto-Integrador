@@ -1,0 +1,287 @@
+/* Estilos Generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fuente */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+/* Cabecera */
+header {
+    background-image: url('../images/imagen.webp');
+    background-size: cover;
+    background-position: center;
+    padding: 20px 0;
+}
+
+header .container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header .logo {
+    font-size: 1.9em;
+    font-weight: bold;
+    color: aqua; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-shadow: 2px 2px 5px rgb(255, 255, 255), 0px 0px 25px rgba(0, 0, 0, 0.4);
+}
+
+header nav a {
+    text-decoration: none;
+    color: aqua; 
+    font-weight: lighter;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.1em;
+    margin-left: 30px;
+    text-shadow: 2px 2px 5px rgb(255, 255, 255), 0px 0px 25px rgba(0, 0, 0, 0.4);
+}
+
+header nav a:hover {
+    color: #66b3b3; 
+}
+
+/* Sección Hero */
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 50vh;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../images/img-02.jpg');
+    background-size: cover;
+    color: white;
+}
+
+#hero h1 {
+    font-size: 4em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #b3d9d9; 
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 0px 0px 25px rgba(0, 0, 0, 0.4);
+}
+
+#hero button {
+    padding: 20px 40px;
+    background-color: #006666; 
+    color: white;
+    font-size: 1.2em;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+#hero button:hover {
+    background-color: #339999; 
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Sección Somos */
+#somos {
+    background-color: #e0f7fa; 
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#somos .container {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.somos-texto {
+    flex: 1;
+    max-width: 50%;
+}
+
+.somos-texto h2 {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #005555; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.somos-texto p {
+    font-size: 1.2em;
+    color: #666666; 
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.somos-texto button {
+    padding: 12px 30px;
+    background-color: #009999; 
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.somos-texto button:hover {
+    background-color: #007777; 
+    transform: translateY(-3px);
+}
+
+.somos-imagen {
+    flex: 1;
+    max-width: 50%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.somos-imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.somos-imagen:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    #somos .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .somos-texto,
+    .somos-imagen {
+        max-width: 100%;
+    }
+
+    .somos-texto h2 {
+        font-size: 2.5em;
+    }
+
+    .somos-texto p {
+        font-size: 1.1em;
+    }
+}
+
+/* Sección Feed */
+#servicios {
+    background-color: #f4f4f9; 
+    padding: 10px 0;
+}
+
+#servicios .container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: aqua;
+    padding: 15px;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: 80%;
+}
+
+.carousel-caption h5 {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 50px;
+    height: 50px;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-indicators button {
+    background-color: #333333; 
+    border-radius: 50%;
+}
+
+.carousel-indicators .active {
+    background-color: #66b3b3; 
+}
+
+/* Sección Final */
+#final {
+    background-color: #009999; 
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#final h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+#final button {
+    padding: 15px 40px;
+    background-color: #ffffff;
+    color: #009999;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#final button:hover {
+    background-color: #007777; 
+    color: white;
+}
+
+/* Footer */
+footer {
+    background-color: #333333; 
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
