@@ -3,9 +3,7 @@ from models.entities.User import User
 
 class ModelUser:
 
-    # -----------------------------
     # LOGIN DE USUARIO
-    # -----------------------------
     @classmethod
     def login(cls, db, user):
         try:
@@ -17,7 +15,7 @@ class ModelUser:
             if data:
                 valid_password = check_password_hash(data[2], user.Password)
                 if valid_password:
-                    # Password correcto → retornamos objeto User con datos
+                    # Password correcto  retornamos objeto User con datos
                     return User(data[0], data[1], True, data[3], data[4])
                 else:
                     # Contraseña incorrecta
@@ -28,9 +26,9 @@ class ModelUser:
         except Exception as ex:
             raise Exception(ex)
 
-    # -----------------------------
+   
     # OBTENER USUARIO POR ID
-    # -----------------------------
+   
     @classmethod
     def get_by_id(cls, db, id):
         try:
@@ -45,9 +43,9 @@ class ModelUser:
         except Exception as ex:
             raise Exception(ex)
 
-    # -----------------------------
+    
     # REGISTRO DE USUARIOS
-    # -----------------------------
+    
     @classmethod
     def register(cls, db, user):
         try:
